@@ -1,0 +1,239 @@
+/* ===== News Item Card (Dashboard Style) ===== */
+.news-item {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md); /* 16px */
+  border: 1px solid var(--border-color); /* Soft border */
+  box-shadow: var(--shadow-md); /* Soft shadow */
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+}
+
+.news-item:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--primary-light);
+}
+
+.news-item.read {
+  opacity: 0.7; /* Gentle fade out */
+  background: var(--bg-primary); /* Blend into background slightly */
+  border-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+.news-item.read:hover {
+  opacity: 0.85;
+}
+
+/* ===== Card Header (clickable) ===== */
+.news-item-header {
+  padding: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  transition: background var(--transition-speed) ease;
+}
+
+.news-item-header:hover {
+  background: var(--primary-light);
+}
+
+.news-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.news-item-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent); /* Muted orange for secondary highlights */
+  margin-bottom: 12px;
+}
+
+.news-item-source-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--accent-light);
+}
+
+.news-item-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  transition: color var(--transition-speed) ease;
+}
+
+/* Strikethrough Read State (Soft green/gray) */
+.news-item.read .news-item-title {
+  text-decoration: line-through;
+  text-decoration-color: var(--primary); /* Muted line-through */
+  color: var(--text-muted);
+}
+
+.news-item-expand-icon {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  transition: transform var(--transition-speed) ease,
+              color var(--transition-speed) ease;
+  flex-shrink: 0;
+  margin-top: 4px;
+  background: var(--bg-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-item:hover .news-item-expand-icon {
+  color: var(--primary);
+  background: #fff;
+}
+
+.news-item.expanded .news-item-expand-icon {
+  transform: rotate(180deg);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ===== Card Body (expandable) ===== */
+.news-item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 24px;
+}
+
+.news-item.expanded .news-item-body {
+  max-height: 600px;
+  padding: 0 24px 24px;
+}
+
+/* Divider inside card */
+.news-item-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-color); /* Soft divider */
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.news-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.news-item-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: var(--bg-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.news-item-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* ===== Buttons: Pill Style ===== */
+.mark-read-btn, .read-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 30px; /* Pill style */
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid transparent; /* Prepare for border transition */
+}
+
+/* Unread -> Needs action */
+.mark-read-btn.unread {
+  background: var(--primary); /* Soft green */
+  color: #fff;
+}
+
+.mark-read-btn.unread:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Read -> Completed state */
+.mark-read-btn.is-read {
+  background: transparent;
+  color: var(--primary); /* Soft green text */
+  border-color: var(--primary-light);
+  cursor: default;
+  box-shadow: none;
+}
+
+/* External Link Button */
+.read-link-btn {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-color: var(--border-color);
+}
+
+.read-link-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .news-item-header {
+    padding: 16px 20px;
+  }
+
+  .news-item-body {
+    padding: 0 20px;
+  }
+
+  .news-item.expanded .news-item-body {
+    padding: 0 20px 20px;
+  }
+
+  .news-item-title {
+    font-size: 1.05rem;
+  }
+
+  .news-item-description {
+    font-size: 0.9rem;
+  }
+
+  .news-item-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .news-item-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,17 @@
+/* ===== News List Container ===== */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Dashboard gap-based layout */
+  padding: 0 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .news-list {
+    padding: 0 16px;
+    gap: 16px;
+  }
+}
