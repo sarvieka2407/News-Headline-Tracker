@@ -4,7 +4,7 @@ import CategoryFilter from './components/CategoryFilter';
 import NewsList from './components/NewsList';
 import './styles/global.css';
 
-const API_KEY = 'e9294e57409f4e70b6d5d640b6069454'; // Replace with your NewsAPI key
+const API_KEY = '6972e3ea40f9417891a5d7626a94a682'; // Replace with your NewsAPI key
 const BASE_URL = 'https://newsapi.org/v2/top-headlines';
 
 function App() {
